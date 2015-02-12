@@ -6,11 +6,10 @@
 
 include __DIR__.'/helper.php';
 
-$ip_file = __DIR__.'/ips.txt';
+$ip_file = __DIR__.'/abc1_ips.txt';
 
 if (! is_file($ip_file)) {
-    // $ips = get_free_ips1();
-    $ips = get_free_ips2();
+    $ips = get_free_ips1();
     file_put_contents($ip_file, json_encode($ips));
 }
 
@@ -25,3 +24,4 @@ foreach ($ips as $key => $ip) {
     $ret = @json_decode($ret, true);
     echo "{$ret['code']} - {$ret['msg']}\n";
 }
+unlink($ip_file);
